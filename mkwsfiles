@@ -1,0 +1,1 @@
+find . -type f -print | egrep -v "\.class$|\.jar$|\.svn|\.gif$|\.jpg$|\.png$|\.jpeg$|\.git" > .wsfiles

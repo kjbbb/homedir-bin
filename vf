@@ -1,0 +1,41 @@
+#!/usr/bin/perl
+use File::Basename;
+
+if($#ARGV != 0) {
+  print "usage: vf pattern\n";
+  exit;
+}
+$pattern = $ARGV[0];
+print argc;
+open FD, ".wsfiles" or die ".wsfiles: $!";
+@lines = <FD>;
+foreach(@lines) {
+  chomp($_);
+  $line = basename($_);
+  if($line =~ m/$pattern/i) {
+    push(@files, $_);
+  }
+}
+$n = 0;
+foreach(@files) {
+  $n++;
+  print "[$n] $_ [$n]\n";
+}
+if($n == 0) {
+  exit;
+}
+$ans = 1;
+if($n > 1) {
+  print "Select: ";
+  $ans = <STDIN>;
+  chomp($ans);
+  if($ans == "") {
+    exit;
+  }
+}
+$ans -= 1;
+if( !defined(@files[$ans])) {
+  exit;
+}
+$selected = @files[$ans];
+system("vi", $selected);

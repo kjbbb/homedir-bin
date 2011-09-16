@@ -1,0 +1,3 @@
+#!/bin/bash
+
+qemu-system-x86_64 -m 512 -hda ~/vm/ubuntu-server-10.04.qcow2 -redir tcp:2222::22 -redir tcp:2020::80

@@ -1,0 +1,6 @@
+# set Terminal.app title
+if [ $# != 1 ]; then
+  echo "usage: tt title"
+fi
+
+echo -n -e "\033]0;$1\007"
